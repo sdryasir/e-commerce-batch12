@@ -1,16 +1,9 @@
 import express from 'express';
-import { users, products } from './db.js';
+
 const app = express();
+import prodctRoutes from './routes/productRoutes.js'
 
-
-
-app.get('/products', function(req, res, next){
-    res.json(products);
-})
-
-app.get('/users', function(req, res, next){
-    res.json(users)
-})
+app.use('/api', prodctRoutes)
 
 
 app.listen(8000, (c)=>{
