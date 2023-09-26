@@ -5,13 +5,18 @@ export const getAllProducts = function(req, res, next){
 }
 
 export const getProductById = function(req, res, next){
-    res.json(products);
+    const {id} = req.params;
+    console.log(id);
+    res.json({
+        message:"Single product"
+    });
 }
 
 
 export const createNewProduct = function(req, res, next){
+    const newProduct = req.body;
     res.json({
-        message: 'Create function called'
+        product:newProduct
     });
 }
 
@@ -22,6 +27,8 @@ export const updateProduct = function(req, res, next){
 }
 
 export const deleteProduct = function(req, res, next){
+    console.log(req.query);
+    
     res.json({
         message: 'Delete function called'
     });
