@@ -1,5 +1,7 @@
 import { products } from "../db.js";
 
+import Product from '../models/productSchema.js'
+
 export const getAllProducts = function(req, res, next){
     res.json(products);
 }
@@ -13,10 +15,11 @@ export const getProductById = function(req, res, next){
 }
 
 
-export const createNewProduct = function(req, res, next){
+export const createNewProduct = async function(req, res, next){
     const newProduct = req.body;
+    const r = await Product.create(newProduct)
     res.json({
-        product:newProduct
+        product:r
     });
 }
 
