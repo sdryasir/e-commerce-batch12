@@ -11,7 +11,7 @@ import {
 router.route('/products').get(getAllProducts);
 router.route('/product/:id').get(getProductById);
 router.route('/new/product').post(createNewProduct);
-router.route('/update').put(updateProduct);
-router.route('/delete').delete(deleteProduct);
+router.route('/product/update/:id').put(updateProduct);
+router.route('/product/delete/:id').delete(deleteProduct);
 
 export default router;
