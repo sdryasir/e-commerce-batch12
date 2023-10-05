@@ -16,10 +16,15 @@ export const getProductById = async function(req, res, next){
 
 export const createNewProduct = async function(req, res, next){
     const newProduct = req.body;
-    const r = await Product.create(newProduct)
-    res.json({
-        product:r
-    });
+    try {
+        const r = await Product.create(newProduct)
+        res.json({
+            product:r
+        });
+    } catch (error) {
+        next(error)
+    }
+    
 }
 
 export const updateProduct = async function(req, res, next){
