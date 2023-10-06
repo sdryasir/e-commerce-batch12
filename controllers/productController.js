@@ -9,8 +9,16 @@ export const getAllProducts = async function(req, res, next){
 
 export const getProductById = async function(req, res, next){
     const {id} = req.params;
-    const product = await Product.findById(id)
-    res.json(product);
+    try {
+        const product = await Product.findById(id)
+        if(product){
+            res.json(product);
+        }else{
+            next(new Error("Product not found"))
+        }
+    } catch (error) {
+        next(error);
+    }
 }
 
 
